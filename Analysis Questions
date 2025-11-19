@@ -1,0 +1,16 @@
+1. In the example you gave us, the percentage is 8.71. The memory becomes fragmented because P1 left a hole 0-99 and P4 fits part of the hole
+but not all of it, which then leaves a gap in memory. The rest of the memory is one big chunk in comparison.
+
+2. P4 uses the block left by P1 because the FIFO method always takes the first big enough hole, even if the hole is too big. The extra space that 
+isn't used by P4 becomes a separate free memory. 
+
+3.Workload1.txt creates more fragmentation because there are more smaller processes, which create more smaller holes compared to
+creating fewer, bigger holes, which results in less fragmentation
+
+4. Allocation can fail even though total free memory is larger than the request because the free space is split into many smaller separate holes, and 
+you would need large chunks or one continuous block of memory. So let's say the total free memory is 600, but the largest hole is only 200. There is 
+enough memory altogether, but there needs to be enough memory in at least one chunk .
+
+5. Best fit would choose the smallest hole that is big enough for the request. Best fit would still put 50KB in the 0-99 hole because 
+that is the smallest hole so it would behave the same as FIFO. However, in other cases, like if 0-99 wasn't the smallest, Best Fit can reduce 
+fragmentation because it can leave larger spaces untouched. In this case, fragmentation is not reduced 
